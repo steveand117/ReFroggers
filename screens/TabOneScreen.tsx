@@ -8,7 +8,8 @@ import { RootTabScreenProps } from '../types';
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Welcome to Froggers</Text>
+      <Text style={styles.title}>Scan a QR code to get started</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <Text style={styles.bruh}>Bruh</Text>
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
