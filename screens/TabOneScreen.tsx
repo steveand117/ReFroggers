@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   const scanPressed = ()=> {
-    navigation.navigate('Home');
+    navigation.navigate('TabThree');
   }
   const frogPressed = ()=> {
     navigation.navigate('Home');

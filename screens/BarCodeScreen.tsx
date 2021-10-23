@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
+import {Alert, Button, Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text, View} from '../components/Themed';
 import {BarCodeScanner, BarCodeScannerResult} from 'expo-barcode-scanner';
 import BarcodeMask from 'react-native-barcode-mask';
@@ -44,35 +44,27 @@ export default function BarCodeScanScreen({navigation}: RootTabScreenProps<'TabT
     if (hasPermission === false) {
         return <Text>No access to camera</Text>;
     }
+    const backPressed = ()=> {
+        navigation.navigate('TabOne');
+    }
     return (
         <View style={{flex: 1}}>
+            <TouchableOpacity style = {styles.button} onPress={backPressed}>
+                <Text style={styles.buttonText}>Return To Home Page</Text>
+            </TouchableOpacity>
             <BarCodeScanner onBarCodeScanned={handleBarCodeScanned}
-                            type={type}
-                            barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-                            style={[StyleSheet.absoluteFillObject, styles.container]}>
+                    type={BarCodeScanner.Constants.Type.back}
+                    barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+                    style={styles.container}>
                 <View
                     style={{
                         flex: 1,
                         backgroundColor: 'transparent',
                         flexDirection: 'row',
                     }}>
-                    <TouchableOpacity
-                        style={{
-                            flex: 1,
-                            alignItems: 'flex-end',
-                        }}
-                        onPress={() => {
-                            setType(
-                                type === BarCodeScanner.Constants.Type.back
-                                    ? BarCodeScanner.Constants.Type.front
-                                    : BarCodeScanner.Constants.Type.back
-                            );
-                        }}>
-                        <Text style={{fontSize: 18, margin: 5, color: 'white'}}> Flip </Text>
-                    </TouchableOpacity>
                 </View>
-                <BarcodeMask edgeColor="#62B1F6" showAnimatedLine/>
-                {scanned && <Button title="Scan Again" onPress={() => setScanned(false)}/>}
+            <BarcodeMask edgeColor="#62B1F6" showAnimatedLine/>
+            {scanned && <Button title="Scan Again" onPress={() => setScanned(false)}/>}
             </BarCodeScanner>
         </View>
     );
@@ -88,9 +80,17 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
+    button: {
+        backgroundColor: '#42A840',
+        width: "100%",
+        padding: 4,
+        fontSize:  27,
+        fontFamily: 'press-start',
     },
+    buttonText: {
+        color: 'white',
+        marginLeft: '15%',
+        fontSize:  12,
+        fontFamily: 'press-start',
+    }
 });
