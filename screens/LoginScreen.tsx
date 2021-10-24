@@ -23,7 +23,7 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
           <Text style={styles.prompt}>username:</Text>
           <TextInput style={styles.input}></TextInput>
           <Text style={styles.prompt}>password:</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput secureTextEntry={true} style={styles.input}></TextInput>
           <Text style={styles.rando}>forgot your password?</Text>
           <Text style={styles.rando}>sign up</Text>
 

@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 export default function InfoScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
     const cancelPressed = ()=> {
-        navigation.navigate('Home');
+        navigation.navigate('TabOne');
       }
       const continuePressed = ()=> {
         navigation.navigate('Submit');
