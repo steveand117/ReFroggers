@@ -8,7 +8,7 @@ import { RootTabScreenProps } from '../types';
 export default function TabTwoScreen({route, navigation}: RootTabScreenProps<'TabTwo'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{route.params.data}</Text>
+      <Text style={styles.title}>{route.params ? route.params.data: "Nothing!"}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
     </View>

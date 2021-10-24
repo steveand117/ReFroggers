@@ -21,6 +21,8 @@ import LoginScreen from '../screens/LoginScreen';
 import FrogScreen from '../screens/FrogScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import InfoScreen from '../screens/InfoScreen';
+import SubmitScreen from '../screens/SubmitScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -45,6 +47,8 @@ function RootNavigator() {
       <Stack.Screen name="TabOne" component={TabOneScreen} options={{ headerShown: false }} />
       <Stack.Screen name="TabThree" component={TabQRCode} options={{ headerShown: false }} />
       <Stack.Screen name="Frog" component={FrogScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Submit" component={SubmitScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Info" component={InfoScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

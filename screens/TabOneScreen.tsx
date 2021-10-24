@@ -10,6 +10,10 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
   const frogPressed = ()=> {
     navigation.navigate('Frog');
   }
+  const infoPressed = ()=> {
+    navigation.navigate('Info');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
@@ -28,6 +32,11 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 
       <TouchableOpacity onPress={frogPressed} style={styles.button}>
             <Text style= {styles.buttonText}>choose companion</Text>
+      </TouchableOpacity>
+
+      
+      <TouchableOpacity onPress={infoPressed} style={styles.button}>
+            <Text style= {styles.buttonText}>test!</Text>
       </TouchableOpacity>
 
       <Image
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    marginLeft: '15%',
+    alignSelf: 'center',
     fontSize:  12,
     fontFamily: 'press-start',
   },

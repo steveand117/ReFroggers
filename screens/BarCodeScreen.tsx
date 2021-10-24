@@ -26,6 +26,7 @@ export default function BarCodeScanScreen({navigation}: RootTabScreenProps<'TabT
     }, []);
 
     const handleBarCodeScanned = (scanningResult: BarCodeScannerResult) => {
+        // throw 'bruh';
         if (!scanned) {
             const {type, data, bounds: {origin} = {}} = scanningResult;
             // @ts-ignore
