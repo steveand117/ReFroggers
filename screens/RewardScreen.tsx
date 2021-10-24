@@ -34,8 +34,8 @@ export default function RewardScreen({route, navigation} : any) {
     const continuePressed = ()=> {
       navigation.navigate('TabThree');
     }
-    const total = route.params.total * 5;
-    route.params.setCurMoney(route.params.curMoney + total);
+    const total = route.params.curMoney + route.params.total * 5;
+    route.params.setCurMoney(total);
     return (
       <ImageBackground
         source={background}
@@ -43,14 +43,14 @@ export default function RewardScreen({route, navigation} : any) {
         >
       <View style={styles.container}>
         <View style={styles.moneyBg}>
-            <Text style={styles.moneyText}>{route.params.curMoney + total}</Text>
+            <Text style={styles.moneyText}>{total}</Text>
             <Image
                 source={frogecoin}
                 style={styles.moneyLogo}
             ></Image>
           </View>
         <Text style={styles.title}>you earned:</Text>
-        <Text style={styles.title}>{total} Frogecoin</Text>
+        <Text style={styles.title}>{route.params.total * 5} Frogecoin</Text>
 
         <Image
             source={imageMap.get(route.params.curFrog)}

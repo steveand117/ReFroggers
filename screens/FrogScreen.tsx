@@ -157,7 +157,7 @@ export default function FrogScreen({ navigation, route }: any) {
                         route.params.setCurFrogName(nameMap.get(curIndex));
                     }
                 }}>
-                    <Text style={[styles.buyText, {marginTop: curBought ? "1%": "6%"}, {marginLeft: curBought ? "30%": "0%"}]}>{curBought ? "Selected": 50}</Text>
+                    <Text style={[styles.buyText, {marginTop: curBought ? "1.7%": "6%"}, {marginLeft: curBought ? "32%": "10%"}]}>{curBought ? "Selected": 50}</Text>
                     <Image
                         source={frogecoin}
                         style={[styles.moneyLogo, {opacity: curBought ? 0: 100}]}
@@ -214,15 +214,14 @@ const styles = StyleSheet.create({
         height: 100,
     },
     gridView: {
-        marginTop: 10,
         flex: 1,
     },
     bigFrog: {
-        width: 200,
-        height: 200,
+        width: 180,
+        height: 180,
     },
     rando: {
-        color: '#42A840',
+        color: '#8FC320',
         width: '90%',
         borderRadius: 25,
         textAlign: 'center',
@@ -245,7 +244,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         marginRight: '2%',
-        marginTop: '3%',
         fontSize:  16,
         fontFamily: 'press-start'
     },
@@ -275,15 +273,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderRadius: 25,
         width: "25%",
-        padding: 10,
-        alignSelf: 'center'
+        padding: 8,
+        alignSelf: 'center',
+        marginTop: "2%",
     },
     buyText: {
         marginTop: "6%",
         fontSize:  12,
         fontFamily: 'press-start',
         color: '#FFFFFF',
-        marginLeft: "10%"
     },
     bigView: {
         width: "100%",

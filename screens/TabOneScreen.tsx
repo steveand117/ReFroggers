@@ -60,7 +60,10 @@ const [curMoney, setCurMoney] = useState(300);
 const [curBought, setCurBought] = useState([false, false, false, false, false, false, false, false, true])
 
   const scanPressed = ()=> {
-    navigation.navigate('TabThree', {curFrog: curFrog});
+    navigation.navigate('TabThree', {
+      curFrog: curFrog,
+      curMoney: curMoney,
+      setCurMoney: setCurMoney});
   }
   const frogPressed = ()=> {
     navigation.navigate('Frog', {
@@ -101,11 +104,6 @@ const [curBought, setCurBought] = useState([false, false, false, false, false, f
 
       <TouchableOpacity onPress={frogPressed} style={styles.button}>
             <Text style= {styles.buttonText}>choose companion</Text>
-      </TouchableOpacity>
-
-      
-      <TouchableOpacity onPress={infoPressed} style={styles.button}>
-            <Text style= {styles.buttonText}>test!</Text>
       </TouchableOpacity>
 
       <Image
