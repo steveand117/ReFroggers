@@ -4,21 +4,34 @@ import { RootStackParamList } from '../types';
 import { Counter } from '../components/Counter';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
 
+const background = require('../assets/images/background.png');
 
-export default function SubmitScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
+export default function SubmitScreen({route, navigation} : any) {
+  const [count1, setCount1] = React.useState(0);
+  const [count2, setCount2] = React.useState(0);
+  const [count3, setCount3] = React.useState(0);
+
+
     const cancelPressed = ()=> {
         navigation.navigate('TabOne');
       }
     const continuePressed = ()=> {
-      navigation.navigate('Reward');
+      let num = count1 + count2 + count3;
+      if (num === 0) {
+        Alert.alert("You need to submit something!");
+      } else {
+        navigation.navigate('Reward', {
+          curFrog: route.params.curFrog,
+          total: num,
+          curMoney: route.params.curMoney,
+          setCurMoney: route.params.setCurMoney});
+      }
     }
     
-    const [count1, setCount1] = React.useState(0);
-    const [count2, setCount2] = React.useState(0);
-    const [count3, setCount3] = React.useState(0);
+
     return (
       <ImageBackground
-        source={require('../assets/images/background.png')}
+        source={background}
         style={styles.background}
         >
       <View style={styles.container}>

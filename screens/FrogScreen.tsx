@@ -24,6 +24,8 @@ const fulltfrog = require('../assets/images/fullfrogs/truefrog.png');
 const fullwizard = require('../assets/images/fullfrogs/wizardfrog.png');
 
 const frogecoin = require('../assets/images/frogecoin.png');
+const background = require('../assets/images/background.png');
+const backarrow = require('../assets/images/backarrow.png');
 
 const frogs = {
     cowboy,
@@ -108,11 +110,15 @@ export default function FrogScreen({ navigation, route }: any) {
     ]);
 
     return (
+        <ImageBackground
+        source={background}
+        style={styles.background}
+        >
         <View style={styles.container}>
             <View style={styles.bigView}>
                 <TouchableOpacity onPress={backPressed}>
                     <Image
-                        source={require('../assets/images/backarrow.png')}
+                        source={backarrow}
                         style={styles.backarrow}
                     ></Image>
                 </TouchableOpacity>
@@ -159,9 +165,15 @@ export default function FrogScreen({ navigation, route }: any) {
                   )}
                 />
         </View>
+        </ImageBackground>
     )
 }
 const styles = StyleSheet.create({
+    background: {
+        width: '100%',
+        height: '100%',
+        color: "#E3FCAE"
+      }, 
     container: {
       width: '100%',
       height: '100%',

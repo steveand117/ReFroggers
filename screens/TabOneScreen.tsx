@@ -13,6 +13,7 @@ const rainbow = require('../assets/images/fullfrogs/rainbowfrog.png');
 const tfrog = require('../assets/images/fullfrogs/truefrog.png');
 const wizard = require('../assets/images/fullfrogs/wizardfrog.png');
 
+const background = require('../assets/images/background.png');
 
 const frogs = {
     cowboy,
@@ -58,7 +59,7 @@ const [curFrogName, setCurFrogName] = useState(nameMap.get(curFrog));
 const [curMoney, setCurMoney] = useState(300);
 
   const scanPressed = ()=> {
-    navigation.navigate('TabThree');
+    navigation.navigate('TabThree', {curFrog: curFrog});
   }
   const frogPressed = ()=> {
     navigation.navigate('Frog', {
@@ -69,12 +70,15 @@ const [curMoney, setCurMoney] = useState(300);
       setCurMoney: setCurMoney});
   }
   const infoPressed = ()=> {
-    navigation.navigate('Info');
+    navigation.navigate('Info', {
+      curFrog: curFrog,
+      curMoney: curMoney,
+      setCurMoney: setCurMoney});
   }
 
   return (
     <ImageBackground
-        source={require('../assets/images/background.png')}
+        source={background}
         style={styles.background}
         >
     <View style={styles.container}>
@@ -85,8 +89,8 @@ const [curMoney, setCurMoney] = useState(300);
             resizeMode="contain"
       >
       </Image>
-      <Text style={styles.rando}>your ecofrog:</Text>
-      <Text style={styles.rando}>{curFrogName}</Text>
+      <Text style={styles.rando}>your frog companion:</Text>
+      <Text style={[styles.rando, {fontSize: 15}]}>{curFrogName}</Text>
 
       <TouchableOpacity onPress={scanPressed} style={styles.button}>
             <Text style= {styles.buttonText}>scan something!</Text>

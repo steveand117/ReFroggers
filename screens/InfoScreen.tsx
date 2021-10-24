@@ -2,8 +2,32 @@ import * as React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
+const cowboy = require('../assets/images/fullfrogs/cowboyfrog.png');
+const distinguished = require('../assets/images/fullfrogs/distinguishedfrog.png');
+const ffrog = require('../assets/images/fullfrogs/falsefrog.png');
+const lemon = require('../assets/images/fullfrogs/lemonfrog.png');
+const pirate = require('../assets/images/fullfrogs/piratefrog.png');
+const prince = require('../assets/images/fullfrogs/princefrog.png');
+const rainbow = require('../assets/images/fullfrogs/rainbowfrog.png');
+const tfrog = require('../assets/images/fullfrogs/truefrog.png');
+const wizard = require('../assets/images/fullfrogs/wizardfrog.png');
 
-export default function InfoScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
+const background = require('../assets/images/background.png');
+
+export default function InfoScreen({route, navigation} : any) {
+  const imageMap = new Map([
+    [0, cowboy],
+    [1, distinguished],
+    [2, ffrog],
+    [3, lemon],
+    [4, pirate],
+    [5, prince],
+    [6, rainbow],
+    [7, tfrog],
+    [8, wizard],
+]);
+
+
   const backPressed = ()=> {
     navigation.navigate('TabOne');
   }
@@ -11,11 +35,14 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
       navigation.navigate('TabOne');
     }
     const continuePressed = ()=> {
-      navigation.navigate('Submit');
+      navigation.navigate('Submit', {
+        curFrog: route.params.curFrog,
+        curMoney: route.params.curMoney,
+        setCurMoney: route.params.setCurMoney});
     }
     return (
       <ImageBackground
-        source={require('../assets/images/background.png')}
+        source={background}
         style={styles.background}
         >
       <View style={styles.container}>
@@ -27,9 +54,10 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
                   ></Image>
               </TouchableOpacity>
           </View>
-        <Text style={styles.title}>FROG BIN 2</Text>
+        <Text style={styles.title}>{route.params.data}</Text>
         <Text style={styles.title}>accepts:</Text>
         <Text style={styles.subtitle}>plastic 1, plastic 2, and glass</Text>
+
         <TouchableOpacity onPress={continuePressed} style={styles.button}>
             <Text style= {styles.buttonText}>i have those!</Text>
       </TouchableOpacity>
@@ -37,6 +65,12 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
       <TouchableOpacity onPress={cancelPressed} style={styles.subButton}>
             <Text style= {styles.buttonText}>cancel</Text>
       </TouchableOpacity>
+      <Image
+            source={imageMap.get(route.params.curFrog)}
+            style={styles.frog}
+            resizeMode="contain"
+        >
+        </Image>
         {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
         {/* Use a light status bar on iOS to account for the black space above the modal
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} /> */}
@@ -74,7 +108,7 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
         color: '#8FC320',
         fontFamily: 'press-start',
         marginTop: "20%",
-        marginBottom: "20%",
+        marginBottom: "10%"
     },
     bruh: {
       fontSize: 40,

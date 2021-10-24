@@ -4,6 +4,7 @@ import {Text, View} from '../components/Themed';
 import {BarCodeScanner, BarCodeScannerResult} from 'expo-barcode-scanner';
 import BarcodeMask from 'react-native-barcode-mask';
 import { RootTabScreenProps } from '../types';
+import { TabRouter } from '@react-navigation/routers';
 
 const finderWidth: number = 280;
 const finderHeight: number = 230;
@@ -12,11 +13,10 @@ const height = Dimensions.get('window').height;
 const viewMinX = (width - finderWidth) / 2;
 const viewMinY = (height - finderHeight) / 2;
 
-export default function BarCodeScanScreen({navigation}: RootTabScreenProps<'TabThree'>) {
+export default function BarCodeScanScreen({navigation, route}: any) {
     const [hasPermission, setHasPermission] = useState<boolean | null>(null);
     const [type, setType] = useState<any>(BarCodeScanner.Constants.Type.back);
     const [scanned, setScanned] = useState<boolean>(false);
-
 
     useEffect(() => {
         (async () => {
@@ -33,8 +33,11 @@ export default function BarCodeScanScreen({navigation}: RootTabScreenProps<'TabT
             const {x, y} = origin;
             if (x >= viewMinX && y >= viewMinY && x <= (viewMinX + finderWidth / 2) && y <= (viewMinY + finderHeight / 2)) {
                 setScanned(true);
-                alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-                navigation.navigate("TabTwo", {data: data});
+                navigation.navigate("Info", {
+                    data: data, 
+                    curFrog: route.params.curFrog,
+                    curMoney: route.params.curMoney,
+                    setCurMoney: route.params.setCurMoney});
             }
         }
     };
