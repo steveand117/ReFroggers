@@ -1,9 +1,12 @@
-import { Text, View } from '../components/Themed';
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
+
 export default function InfoScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
+  const backPressed = ()=> {
+    navigation.navigate('TabOne');
+  }
     const cancelPressed = ()=> {
         navigation.navigate('TabOne');
       }
@@ -11,8 +14,21 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
         navigation.navigate('Submit');
       }
     return (
+      <ImageBackground
+        source={require('../assets/images/background.png')}
+        style={styles.background}
+        >
       <View style={styles.container}>
-        <Text style={styles.title}>FROG BIN 2 accepts</Text>
+          <View style={styles.bigView}>
+              <TouchableOpacity onPress={backPressed}>
+                  <Image
+                      source={require('../assets/images/backarrow.png')}
+                      style={styles.backarrow}
+                  ></Image>
+              </TouchableOpacity>
+          </View>
+        <Text style={styles.title}>FROG BIN 2</Text>
+        <Text style={styles.title}>accepts:</Text>
         <Text style={styles.subtitle}>plastic 1, plastic 2, and glass</Text>
         <TouchableOpacity onPress={continuePressed} style={styles.button}>
             <Text style= {styles.buttonText}>i have those!</Text>
@@ -25,15 +41,21 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
         {/* Use a light status bar on iOS to account for the black space above the modal
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} /> */}
       </View>
+      </ImageBackground>
     );
   }
 
-  const styles = StyleSheet.create({ 
+  const styles = StyleSheet.create({
+    background: {
+      width: '100%',
+      height: '100%',
+      color: "#E3FCAE"
+    }, 
     container: {
       width: '100%',
       height: '100%',
       alignItems: 'center',
-      backgroundColor: "#E3FCAE",
+      padding: 50,
     },
     title:{
       color: '#42A840',
@@ -43,13 +65,16 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
       marginLeft: '2%',
       fontSize:  20,
       fontFamily: 'press-start',
-      marginTop: '15%',
+      padding: 8,
     },
     subtitle:{
         fontSize: 18,
         lineHeight: 18,
         textAlign: 'center',
-        color: '#8FC320'
+        color: '#8FC320',
+        fontFamily: 'press-start',
+        marginTop: "20%",
+        marginBottom: "20%"
     },
     bruh: {
       fontSize: 40,
@@ -77,6 +102,7 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
       fontSize:  27,
       marginTop: '4%',
       fontFamily: 'press-start',
+      marginBottom: "10%",
     },
     subButton: {
         backgroundColor: 'rgba(66, 168, 64, 0.5)',
@@ -93,10 +119,20 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
       fontFamily: 'press-start',
       alignSelf: 'center'
     },
-    
     logo:{
       width: 100,
       height: 100,
       marginTop: '5%'
-    }
+    },
+    backarrow:{
+      width: 20,
+      height: 20,
+      position: 'absolute',
+      top: -10,
+      left: -25,
+    },
+    bigView: {
+      width: "100%",
+      marginBottom: "20%"
+  },
 });
