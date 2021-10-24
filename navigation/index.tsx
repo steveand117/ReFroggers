@@ -23,6 +23,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import InfoScreen from '../screens/InfoScreen';
 import SubmitScreen from '../screens/SubmitScreen';
+import RewardScreen from '../screens/RewardScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -49,6 +50,7 @@ function RootNavigator() {
       <Stack.Screen name="Frog" component={FrogScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Submit" component={SubmitScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Info" component={InfoScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Reward" component={RewardScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

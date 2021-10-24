@@ -3,34 +3,30 @@ import * as React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
-import { Counter } from '../components/Counter';
-
-export default function SubmitScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
+export default function RewardScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
     const cancelPressed = ()=> {
         navigation.navigate('TabOne');
       }
       const continuePressed = ()=> {
         navigation.navigate('Submit');
       }
-      
-    const [count, setCount] = React.useState(0);
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>input the number of each material recycled:</Text>
+        <Text style={styles.title}>FROG BIN 2 accepts</Text>
         <Text style={styles.subtitle}>plastic 1, plastic 2, and glass</Text>
-        <Counter count={count} setCount={setCount} text="plastic 1"/>
-        
         <TouchableOpacity onPress={continuePressed} style={styles.button}>
-            <Text style= {styles.buttonText}>next</Text>
+            <Text style= {styles.buttonText}>i have those!</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity onPress={cancelPressed} style={styles.subButton}>
+            <Text style= {styles.buttonText}>cancel</Text>
+      </TouchableOpacity>
         {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
         {/* Use a light status bar on iOS to account for the black space above the modal
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} /> */}
       </View>
     );
   }
-
 
   const styles = StyleSheet.create({ 
     container: {

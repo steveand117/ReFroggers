@@ -23,6 +23,7 @@ export type RootStackParamList = {
   TabThree: undefined;
   Info: undefined;
   Submit: undefined;
+  Reward: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

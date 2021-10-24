@@ -17,6 +17,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       TabOne: 'one',
       TabThree: 'three',
       Modal: 'modal',
+      Reward: 'reward',
       NotFound: '*',
     },
   },
