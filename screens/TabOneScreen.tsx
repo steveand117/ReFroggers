@@ -57,6 +57,7 @@ const nameMap = new Map([
 const [curFrog, setCurFrog] = useState(3);
 const [curFrogName, setCurFrogName] = useState(nameMap.get(curFrog));
 const [curMoney, setCurMoney] = useState(300);
+const [curBought, setCurBought] = useState([false, false, false, false, false, false, false, false, true])
 
   const scanPressed = ()=> {
     navigation.navigate('TabThree', {curFrog: curFrog});
@@ -67,7 +68,9 @@ const [curMoney, setCurMoney] = useState(300);
       setCurFrog: setCurFrog, 
       setCurFrogName: setCurFrogName,
       curMoney: curMoney,
-      setCurMoney: setCurMoney});
+      setCurMoney: setCurMoney,
+      curBought: curBought,
+      setCurBought: setCurBought});
   }
   const infoPressed = ()=> {
     navigation.navigate('Info', {

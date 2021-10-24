@@ -96,7 +96,9 @@ export default function FrogScreen({ navigation, route }: any) {
     const [curImage, setCurImage] = useState(fullImageMap.get(route.params.curFrog));
     const [curText, setCurText] = useState(descMap.get(route.params.curFrog));
     const [curName, setCurName] = useState(nameMap.get(route.params.curFrog));
+    const [curIndex, setCurIndex] = useState(route.params.curFrog);
     const [curMoney, setCurMoney] = useState(route.params.curMoney);
+    const [curBought, setCurBought] = useState(route.params.curBought[route.params.curFrog]);
     const [images, setImage] = useState([
         frogs.cowboy,
         frogs.distinguished,
@@ -139,6 +141,25 @@ export default function FrogScreen({ navigation, route }: any) {
 
             <Text style={styles.name}>{curName}</Text>
             <Text style={styles.rando}>{curText}</Text>
+            <TouchableOpacity style={[styles.buyBg, {width: curBought ? "75%": "25%"}, {marginLeft: curBought ? "0%": "0%"}]} 
+                onPress={() => {
+                
+                    let temp = parseInt(curMoney!) - 50;
+                    if (temp >= 0 && !curBought) {
+                        route.params.setCurMoney(temp);
+                        setCurMoney(temp.toString());
+                        const newArray = route.params.curBought;
+                        newArray[curIndex] = true;
+                        route.params.setCurBought(newArray);
+                        setCurBought(newArray);
+                    }
+                }}>
+                    <Text style={[styles.buyText, {marginTop: curBought ? "1%": "6%"}, {marginLeft: curBought ? "30%": "0%"}]}>{curBought ? "Selected": 50}</Text>
+                    <Image
+                        source={frogecoin}
+                        style={[styles.moneyLogo, {opacity: curBought ? 0: 100}]}
+                    ></Image>
+                </TouchableOpacity>
             <FlatGrid
                 itemDimension={100}
                 data={images}
@@ -146,14 +167,15 @@ export default function FrogScreen({ navigation, route }: any) {
                 renderItem={({ item, index }) => (
                     <View>
                         <TouchableOpacity onPress={() => {
-                            route.params.setCurFrog(index);
-                            route.params.setCurFrogName(nameMap.get(index));
-                            let temp = parseInt(curMoney!) - 50;
-                            route.params.setCurMoney(temp);
-                            setCurMoney(temp.toString());
+                            if (curBought) {
+                                route.params.setCurFrog(index);
+                                route.params.setCurFrogName(nameMap.get(index));
+                            }
                             setCurName(nameMap.get(index));
+                            setCurIndex(index)
                             setCurImage(fullImageMap.get(index));
                             setCurText(descMap.get(index)!);
+                            setCurBought(route.params.curBought[index]);
                         }}>
                             <Image
                             source={item}
@@ -242,7 +264,23 @@ const styles = StyleSheet.create({
     moneyLogo:{
         width: 20,
         height: 20,
-        marginLeft: "20%"
+        marginLeft: "20%",
+        backfaceVisibility:  'hidden'
+    },
+    buyBg: {
+        backgroundColor: "#42A840",
+        flexDirection: "row",
+        borderRadius: 25,
+        width: "25%",
+        padding: 10,
+        alignSelf: 'center'
+    },
+    buyText: {
+        marginTop: "6%",
+        fontSize:  12,
+        fontFamily: 'press-start',
+        color: '#FFFFFF',
+        marginLeft: "10%"
     },
     bigView: {
         width: "100%",
