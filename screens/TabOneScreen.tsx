@@ -8,13 +8,13 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
     navigation.navigate('TabThree');
   }
   const frogPressed = ()=> {
-    navigation.navigate('Home');
+    navigation.navigate('Frog');
   }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
       <Image
-            source={require('../assets/images/wizardfrog.png')}
+            source={require('../assets/images/fullfrogs/wizardfrog.png')}
             style={styles.frog}
             resizeMode="contain"
       >
