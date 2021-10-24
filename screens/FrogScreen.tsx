@@ -1,6 +1,7 @@
 import React, { useEffect, Component, useState } from 'react'
 import { FlatGrid } from 'react-native-super-grid';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
+import { RootTabScreenProps } from '../types';
 
 const cowboy = require('../assets/images/frogs/cowboyfrog.png');
 const distinguished = require('../assets/images/frogs/distinguishedfrog.png');
@@ -25,8 +26,13 @@ const frogs = {
     wizard
 };
 
-export default function FrogScreen() {
+export default function FrogScreen({ navigation }: RootTabScreenProps<'Login'>) {
+    const backPressed = ()=> {
+        navigation.navigate('TabOne');
+    }
+
     const [curImage, setCurImage] = useState(frogs.wizard);
+    const [curText, setCurText] = useState("A cool cowboy");
     const [images, setImage] = useState([
         frogs.cowboy,
         frogs.distinguished,
@@ -39,7 +45,7 @@ export default function FrogScreen() {
         frogs.wizard
     ]);
 
-    const map = new Map([
+    const imageMap = new Map([
         [0, frogs.cowboy],
         [1, frogs.distinguished],
         [2, frogs.ffrog],
@@ -51,13 +57,32 @@ export default function FrogScreen() {
         [8, frogs.wizard],
     ]);
 
+    const descMap = new Map([
+        [0, "A cool cowboy"],
+        [1, "Ah yes, what a distinguished gentleman"],
+        [2, "Sus Frog"],
+        [3, "Froot Froog"],
+        [4, "Arrrrrrrrrrrrr"],
+        [5, "prince froge owo"],
+        [6, "R A I N B O W"],
+        [7, "real frog"],
+        [8, "magical froge"],
+    ]);
+
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={backPressed}>
+                <Image
+                    source={require('../assets/images/backarrow.png')}
+                    style={styles.logo}
+                ></Image>
+            </TouchableOpacity>
             <Image
-                source={curImage}
-                style={styles.bigFrog}
-                resizeMode="contain"
-            ></Image>
+                    source={curImage}
+                    style={styles.bigFrog}
+                    resizeMode="contain"
+                ></Image>
+            <Text style={styles.rando}>{curText}</Text>
             <FlatGrid
                 itemDimension={100}
                 data={images}
@@ -65,7 +90,8 @@ export default function FrogScreen() {
                 renderItem={({ item, index }) => (
                     <View>
                         <TouchableOpacity onPress={() => {
-                            setCurImage(map.get(index));
+                            setCurImage(imageMap.get(index));
+                            setCurText(descMap.get(index)!);
                         }}>
                             <Image
                             source={item}
@@ -102,5 +128,22 @@ const styles = StyleSheet.create({
     bigFrog: {
         width: 200,
         height: 200,
-    }
+    },
+    rando: {
+        color: '#42A840',
+        width: '90%',
+        borderRadius: 25,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginRight: '2%',
+        marginTop: '3%',
+        fontSize:  12,
+        fontFamily: 'press-start'
+    },
+    logo:{
+        marginTop: '6%',
+        marginRight: '83%',
+        width: 20,
+        height: 20,
+    },
 });
