@@ -54,7 +54,7 @@ const nameMap = new Map([
 ]);
 
 
-const [curFrog, setCurFrog] = useState(3);
+const [curFrog, setCurFrog] = useState(8);
 const [curFrogName, setCurFrogName] = useState(nameMap.get(curFrog));
 const [curMoney, setCurMoney] = useState(300);
 const [curBought, setCurBought] = useState([false, false, false, false, false, false, false, false, true])
