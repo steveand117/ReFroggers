@@ -80,15 +80,15 @@ export default function FrogScreen({ navigation, route }: any) {
       ]);
 
     const descMap = new Map([
-        [0, "A cool cowboy"],
+        [0, "You've yee'd your last haw"],
         [1, "Ah yes, what a distinguished gentleman"],
-        [2, "ahaha... this is totally a frog right?"],
-        [3, "Froot Froog"],
-        [4, "Arrrrrrrrrrrrr"],
-        [5, "prince froge owo"],
-        [6, "R A I N B O W"],
-        [7, "frog"],
-        [8, "he doesn't actually have magic, but don't tell him"],
+        [2, "Ahaha... this is totally a frog right?"],
+        [3, "A sour fellow, but he still cares for you"],
+        [4, "Arrr..... I mean, ribbit"],
+        [5, "He will accept your kisses"],
+        [6, "Frog the rainbow"],
+        [7, "Frog."],
+        [8, "He doesn't actually have magic, but don't tell him"],
     ]);
 
     const [curImage, setCurImage] = useState(fullImageMap.get(route.params.curFrog));
