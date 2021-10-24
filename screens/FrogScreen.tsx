@@ -26,24 +26,11 @@ const frogs = {
     wizard
 };
 
-export default function FrogScreen({ navigation }: RootTabScreenProps<'Login'>) {
+
+export default function FrogScreen({ navigation, route }: any) {
     const backPressed = ()=> {
         navigation.navigate('TabOne');
     }
-
-    const [curImage, setCurImage] = useState(frogs.wizard);
-    const [curText, setCurText] = useState("A cool cowboy");
-    const [images, setImage] = useState([
-        frogs.cowboy,
-        frogs.distinguished,
-        frogs.ffrog,
-        frogs.lemon,
-        frogs.pirate,
-        frogs.prince,
-        frogs.rainbow,
-        frogs.tfrog,
-        frogs.wizard
-    ]);
 
     const imageMap = new Map([
         [0, frogs.cowboy],
@@ -57,16 +44,43 @@ export default function FrogScreen({ navigation }: RootTabScreenProps<'Login'>) 
         [8, frogs.wizard],
     ]);
 
+    const nameMap = new Map([
+        [0, "Cowboy Frog"],
+        [1, "Distinguished Frog"],
+        [2, "Imposter Frog"],
+        [3, "Lemon Frog"],
+        [4, "Pirate Frog"],
+        [5, "Royal Frog"],
+        [6, "Rainbow Frog"],
+        [7, "True Frog"],
+        [8, "Wizard Frog"],
+      ]);
+
     const descMap = new Map([
         [0, "A cool cowboy"],
         [1, "Ah yes, what a distinguished gentleman"],
-        [2, "Sus Frog"],
+        [2, "ahaha... this is totally a frog right?"],
         [3, "Froot Froog"],
         [4, "Arrrrrrrrrrrrr"],
         [5, "prince froge owo"],
         [6, "R A I N B O W"],
-        [7, "real frog"],
-        [8, "magical froge"],
+        [7, "frog"],
+        [8, "he doesn't actually have magic, but don't tell him"],
+    ]);
+
+    const [curImage, setCurImage] = useState(imageMap.get(route.params.curFrog));
+    const [curText, setCurText] = useState(descMap.get(route.params.curFrog));
+    const [curName, setCurName] = useState(nameMap.get(route.params.curFrog));
+    const [images, setImage] = useState([
+        frogs.cowboy,
+        frogs.distinguished,
+        frogs.ffrog,
+        frogs.lemon,
+        frogs.pirate,
+        frogs.prince,
+        frogs.rainbow,
+        frogs.tfrog,
+        frogs.wizard
     ]);
 
     return (
@@ -81,7 +95,9 @@ export default function FrogScreen({ navigation }: RootTabScreenProps<'Login'>) 
                     source={curImage}
                     style={styles.bigFrog}
                     resizeMode="contain"
-                ></Image>
+            ></Image>
+
+            <Text style={styles.name}>{curName}</Text>
             <Text style={styles.rando}>{curText}</Text>
             <FlatGrid
                 itemDimension={100}
@@ -90,6 +106,9 @@ export default function FrogScreen({ navigation }: RootTabScreenProps<'Login'>) 
                 renderItem={({ item, index }) => (
                     <View>
                         <TouchableOpacity onPress={() => {
+                            route.params.setCurFrog(index);
+                            route.params.setCurFrogName(nameMap.get(index));
+                            setCurName(nameMap.get(index));
                             setCurImage(imageMap.get(index));
                             setCurText(descMap.get(index)!);
                         }}>
@@ -145,5 +164,16 @@ const styles = StyleSheet.create({
         marginRight: '83%',
         width: 20,
         height: 20,
+    },
+    name:{
+        color: '#42A840',
+        width: '90%',
+        borderRadius: 25,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginRight: '2%',
+        marginTop: '3%',
+        fontSize:  16,
+        fontFamily: 'press-start'
     },
 });

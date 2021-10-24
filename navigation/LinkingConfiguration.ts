@@ -16,22 +16,6 @@ const linking: LinkingOptions<RootStackParamList> = {
       Root: 'login',
       TabOne: 'one',
       TabThree: 'three',
-      // Home: {
-      //   screens: {
-      //     TabOne: {
-      //       screens: {
-      //         TabOneScreen: 'one',
-      //       },
-      //     },
-      //     TabTwo: {
-      //       screens: {
-      //         TabTwoScreen: 'two',
-      //       },
-      //     },
-      //   },
-      // },
-      Info: 'info',
-      Submit: 'submit',
       Modal: 'modal',
       NotFound: '*',
     },
