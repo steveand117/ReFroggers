@@ -7,12 +7,12 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
   const backPressed = ()=> {
     navigation.navigate('TabOne');
   }
-    const cancelPressed = ()=> {
-        navigation.navigate('TabOne');
-      }
-      const continuePressed = ()=> {
-        navigation.navigate('Submit');
-      }
+  const cancelPressed = ()=> {
+      navigation.navigate('TabOne');
+    }
+    const continuePressed = ()=> {
+      navigation.navigate('Submit');
+    }
     return (
       <ImageBackground
         source={require('../assets/images/background.png')}
@@ -74,7 +74,7 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
         color: '#8FC320',
         fontFamily: 'press-start',
         marginTop: "20%",
-        marginBottom: "20%"
+        marginBottom: "20%",
     },
     bruh: {
       fontSize: 40,
@@ -133,6 +133,7 @@ export default function InfoScreen({navigation} : NativeStackScreenProps<RootSta
     },
     bigView: {
       width: "100%",
-      marginBottom: "20%"
-  },
+      marginBottom: "20%",
+      flexDirection: "row",
+    },
 });

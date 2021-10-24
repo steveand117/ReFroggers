@@ -73,6 +73,10 @@ const [curMoney, setCurMoney] = useState(300);
   }
 
   return (
+    <ImageBackground
+        source={require('../assets/images/background.png')}
+        style={styles.background}
+        >
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
       <Image
@@ -104,15 +108,20 @@ const [curMoney, setCurMoney] = useState(300);
       >
       </Image>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    width: '100%',
+    height: '100%',
+    color: "#E3FCAE"
+  }, 
   container: {
     width: '100%',
     height: '100%',
     alignItems: 'center',
-    backgroundColor: "#E3FCAE",
   },
   title:{
     color: '#42A840',

@@ -1,39 +1,48 @@
-import { Text, View } from '../components/Themed';
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
+
 export default function RewardScreen({navigation} : NativeStackScreenProps<RootStackParamList>) {
     const cancelPressed = ()=> {
         navigation.navigate('TabOne');
       }
       const continuePressed = ()=> {
-        navigation.navigate('Submit');
+        navigation.navigate('TabThree');
       }
     return (
+      <ImageBackground
+        source={require('../assets/images/background.png')}
+        style={styles.background}
+        >
       <View style={styles.container}>
-        <Text style={styles.title}>FROG BIN 2 accepts</Text>
-        <Text style={styles.subtitle}>plastic 1, plastic 2, and glass</Text>
+        <Text style={styles.title}>you earned:</Text>
+        <Text style={styles.title}>5 Frogecoin</Text>
         <TouchableOpacity onPress={continuePressed} style={styles.button}>
-            <Text style= {styles.buttonText}>i have those!</Text>
+            <Text style= {styles.buttonText}>scan something else!</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={cancelPressed} style={styles.subButton}>
-            <Text style= {styles.buttonText}>cancel</Text>
+            <Text style= {styles.buttonText}>home</Text>
       </TouchableOpacity>
         {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
         {/* Use a light status bar on iOS to account for the black space above the modal
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} /> */}
       </View>
+      </ImageBackground>
     );
   }
 
   const styles = StyleSheet.create({ 
+    background: {
+      width: '100%',
+      height: '100%',
+      color: "#E3FCAE"
+    }, 
     container: {
       width: '100%',
       height: '100%',
       alignItems: 'center',
-      backgroundColor: "#E3FCAE",
     },
     title:{
       color: '#42A840',
