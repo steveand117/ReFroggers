@@ -98,7 +98,8 @@ export default function FrogScreen({ navigation, route }: any) {
     const [curName, setCurName] = useState(nameMap.get(route.params.curFrog));
     const [curIndex, setCurIndex] = useState(route.params.curFrog);
     const [curMoney, setCurMoney] = useState(route.params.curMoney);
-    const [curBought, setCurBought] = useState(route.params.curBought[route.params.curFrog]);
+    const initial = route.params.curBought[route.params.curFrog]
+    const [curBought, setCurBought] = useState(initial);
     const [images, setImage] = useState([
         frogs.cowboy,
         frogs.distinguished,
@@ -152,6 +153,8 @@ export default function FrogScreen({ navigation, route }: any) {
                         newArray[curIndex] = true;
                         route.params.setCurBought(newArray);
                         setCurBought(newArray);
+                        route.params.setCurFrog(curIndex);
+                        route.params.setCurFrogName(nameMap.get(curIndex));
                     }
                 }}>
                     <Text style={[styles.buyText, {marginTop: curBought ? "1%": "6%"}, {marginLeft: curBought ? "30%": "0%"}]}>{curBought ? "Selected": 50}</Text>
@@ -167,7 +170,7 @@ export default function FrogScreen({ navigation, route }: any) {
                 renderItem={({ item, index }) => (
                     <View>
                         <TouchableOpacity onPress={() => {
-                            if (curBought) {
+                            if (route.params.curBought[index]) {
                                 route.params.setCurFrog(index);
                                 route.params.setCurFrogName(nameMap.get(index));
                             }
