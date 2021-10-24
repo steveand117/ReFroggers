@@ -85,7 +85,7 @@ export default function FrogScreen({ navigation, route }: any) {
         [3, "A sour fellow, but he still cares for you"],
         [4, "Arrr..... I mean, ribbit"],
         [5, "He will accept your kisses"],
-        [6, "R A I N B O W"],
+        [6, "Frog the rainbow"],
         [7, "Frog."],
         [8, "He doesn't actually have magic, but don't tell him"],
     ]);
