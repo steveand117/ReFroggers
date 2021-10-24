@@ -13,6 +13,16 @@ const rainbow = require('../assets/images/frogs/rainbowfrog.png');
 const tfrog = require('../assets/images/frogs/truefrog.png');
 const wizard = require('../assets/images/frogs/wizardfrog.png');
 
+const fullcowboy = require('../assets/images/fullfrogs/cowboyfrog.png');
+const fulldistinguished = require('../assets/images/fullfrogs/distinguishedfrog.png');
+const fullffrog = require('../assets/images/fullfrogs/falsefrog.png');
+const fulllemon = require('../assets/images/fullfrogs/lemonfrog.png');
+const fullpirate = require('../assets/images/fullfrogs/piratefrog.png');
+const fullprince = require('../assets/images/fullfrogs/princefrog.png');
+const fullrainbow = require('../assets/images/fullfrogs/rainbowfrog.png');
+const fulltfrog = require('../assets/images/fullfrogs/truefrog.png');
+const fullwizard = require('../assets/images/fullfrogs/wizardfrog.png');
+
 
 const frogs = {
     cowboy,
@@ -44,6 +54,18 @@ export default function FrogScreen({ navigation, route }: any) {
         [8, frogs.wizard],
     ]);
 
+    const fullImageMap = new Map([
+        [0, fullcowboy],
+        [1, fulldistinguished],
+        [2, fullffrog],
+        [3, fulllemon],
+        [4, fullpirate],
+        [5, fullprince],
+        [6, fullrainbow],
+        [7, fulltfrog],
+        [8, fullwizard],
+    ]);
+
     const nameMap = new Map([
         [0, "Cowboy Frog"],
         [1, "Distinguished Frog"],
@@ -68,7 +90,7 @@ export default function FrogScreen({ navigation, route }: any) {
         [8, "he doesn't actually have magic, but don't tell him"],
     ]);
 
-    const [curImage, setCurImage] = useState(imageMap.get(route.params.curFrog));
+    const [curImage, setCurImage] = useState(fullImageMap.get(route.params.curFrog));
     const [curText, setCurText] = useState(descMap.get(route.params.curFrog));
     const [curName, setCurName] = useState(nameMap.get(route.params.curFrog));
     const [images, setImage] = useState([
@@ -109,7 +131,7 @@ export default function FrogScreen({ navigation, route }: any) {
                             route.params.setCurFrog(index);
                             route.params.setCurFrogName(nameMap.get(index));
                             setCurName(nameMap.get(index));
-                            setCurImage(imageMap.get(index));
+                            setCurImage(fullImageMap.get(index));
                             setCurText(descMap.get(index)!);
                         }}>
                             <Image

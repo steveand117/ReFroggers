@@ -19,7 +19,7 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
             resizeMode="contain"
           >
           </Image>
-          <Text style={styles.title}>FROGGERS</Text>
+          <Text style={styles.title}>REFROGGERS</Text>
           <Text style={styles.prompt}>username:</Text>
           <TextInput style={styles.input}></TextInput>
           <Text style={styles.prompt}>password:</Text>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginLeft: '2%',
       padding: "2%",
-      fontSize:  40,
+      fontSize:  36,
       marginTop: '5%',
       fontFamily: 'press-start',
       marginBottom: '2%',

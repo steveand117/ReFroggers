@@ -3,15 +3,15 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { RootTabScreenProps } from '../types';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert, TextInput, Pressable, Button } from 'react-native';
 
-const cowboy = require('../assets/images/frogs/cowboyfrog.png');
-const distinguished = require('../assets/images/frogs/distinguishedfrog.png');
-const ffrog = require('../assets/images/frogs/falsefrog.png');
-const lemon = require('../assets/images/frogs/lemonfrog.png');
-const pirate = require('../assets/images/frogs/piratefrog.png');
-const prince = require('../assets/images/frogs/princefrog.png');
-const rainbow = require('../assets/images/frogs/rainbowfrog.png');
-const tfrog = require('../assets/images/frogs/truefrog.png');
-const wizard = require('../assets/images/frogs/wizardfrog.png');
+const cowboy = require('../assets/images/fullfrogs/cowboyfrog.png');
+const distinguished = require('../assets/images/fullfrogs/distinguishedfrog.png');
+const ffrog = require('../assets/images/fullfrogs/falsefrog.png');
+const lemon = require('../assets/images/fullfrogs/lemonfrog.png');
+const pirate = require('../assets/images/fullfrogs/piratefrog.png');
+const prince = require('../assets/images/fullfrogs/princefrog.png');
+const rainbow = require('../assets/images/fullfrogs/rainbowfrog.png');
+const tfrog = require('../assets/images/fullfrogs/truefrog.png');
+const wizard = require('../assets/images/fullfrogs/wizardfrog.png');
 
 
 const frogs = {
