@@ -55,12 +55,18 @@ const nameMap = new Map([
 
 const [curFrog, setCurFrog] = useState(3);
 const [curFrogName, setCurFrogName] = useState(nameMap.get(curFrog));
+const [curMoney, setCurMoney] = useState(300);
 
   const scanPressed = ()=> {
     navigation.navigate('TabThree');
   }
   const frogPressed = ()=> {
-    navigation.navigate('Frog', {curFrog: curFrog, setCurFrog: setCurFrog, setCurFrogName: setCurFrogName});
+    navigation.navigate('Frog', {
+      curFrog: curFrog, 
+      setCurFrog: setCurFrog, 
+      setCurFrogName: setCurFrogName,
+      curMoney: curMoney,
+      setCurMoney: setCurMoney});
   }
   const infoPressed = ()=> {
     navigation.navigate('Info');

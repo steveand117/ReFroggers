@@ -23,6 +23,7 @@ const fullrainbow = require('../assets/images/fullfrogs/rainbowfrog.png');
 const fulltfrog = require('../assets/images/fullfrogs/truefrog.png');
 const fullwizard = require('../assets/images/fullfrogs/wizardfrog.png');
 
+const frogecoin = require('../assets/images/frogecoin.png');
 
 const frogs = {
     cowboy,
@@ -93,6 +94,7 @@ export default function FrogScreen({ navigation, route }: any) {
     const [curImage, setCurImage] = useState(fullImageMap.get(route.params.curFrog));
     const [curText, setCurText] = useState(descMap.get(route.params.curFrog));
     const [curName, setCurName] = useState(nameMap.get(route.params.curFrog));
+    const [curMoney, setCurMoney] = useState(route.params.curMoney);
     const [images, setImage] = useState([
         frogs.cowboy,
         frogs.distinguished,
@@ -107,12 +109,22 @@ export default function FrogScreen({ navigation, route }: any) {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={backPressed}>
-                <Image
-                    source={require('../assets/images/backarrow.png')}
-                    style={styles.logo}
-                ></Image>
-            </TouchableOpacity>
+            <View style={styles.bigView}>
+                <TouchableOpacity onPress={backPressed}>
+                    <Image
+                        source={require('../assets/images/backarrow.png')}
+                        style={styles.backarrow}
+                    ></Image>
+                </TouchableOpacity>
+                <View style={styles.moneyBg}>
+                    <Text style={styles.moneyText}>{curMoney?.toString()}</Text>
+                    <Image
+                        source={frogecoin}
+                        style={styles.moneyLogo}
+                    ></Image>
+                </View>
+            </View>
+
             <Image
                     source={curImage}
                     style={styles.bigFrog}
@@ -130,6 +142,9 @@ export default function FrogScreen({ navigation, route }: any) {
                         <TouchableOpacity onPress={() => {
                             route.params.setCurFrog(index);
                             route.params.setCurFrogName(nameMap.get(index));
+                            let temp = parseInt(curMoney!) - 50;
+                            route.params.setCurMoney(temp);
+                            setCurMoney(temp.toString());
                             setCurName(nameMap.get(index));
                             setCurImage(fullImageMap.get(index));
                             setCurText(descMap.get(index)!);
@@ -197,5 +212,36 @@ const styles = StyleSheet.create({
         marginTop: '3%',
         fontSize:  16,
         fontFamily: 'press-start'
+    },
+    moneyBg: {
+        backgroundColor: "rgba(255, 255, 255, 0.75)",
+        flexDirection: "row",
+        borderRadius: 25,
+        width: "25%",
+        padding: 10,
+        marginLeft: "60%",
+    },
+    moneyText: {
+        marginTop: "6%",
+        fontSize:  12,
+        fontFamily: 'press-start',
+        color: '#42A840',
+        marginLeft: "10%"
+    },
+    moneyLogo:{
+        width: 20,
+        height: 20,
+        marginLeft: "20%"
+    },
+    bigView: {
+        width: "100%",
+        marginTop: "6%",
+        flexDirection: "row",
+        marginLeft: "9%",
+    },
+    backarrow:{
+        width: 20,
+        height: 20,
+        marginTop: "50%"
     },
 });
