@@ -5,7 +5,7 @@ import { RootTabScreenProps } from '../types';
 
 export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>) {
   const loginPressed = ()=> {
-    navigation.navigate('Home');
+    navigation.navigate('TabOne');
   }
     return (
       <ImageBackground

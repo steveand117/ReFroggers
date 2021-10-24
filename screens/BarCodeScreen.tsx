@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#42A840',
         width: "100%",
-        padding: 4,
+        padding: 20,
         fontSize:  27,
         fontFamily: 'press-start',
     },

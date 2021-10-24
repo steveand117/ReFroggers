@@ -42,7 +42,8 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" component={LoginScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Home" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="TabOne" component={TabOneScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="TabThree" component={TabQRCode} options={{ headerShown: false }} />
       <Stack.Screen name="Frog" component={FrogScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
@@ -51,6 +52,7 @@ function RootNavigator() {
     </Stack.Navigator>
   );
 }
+//<Stack.Screen name="Home" component={BottomTabNavigator} options={{ headerShown: false }} />
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
